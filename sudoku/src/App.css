@@ -46,3 +46,13 @@ input:focus{
     caret-color: transparent;
     background: #78b1eb;
 }
+
+.same-row input,
+.same-col input,
+.same-box input {
+    background: #e6f0ff;
+}
+
+.selected input {
+    background: #78b1eb;
+}
