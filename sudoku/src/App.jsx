@@ -3,23 +3,30 @@ import './App.css';
 import { useState } from 'react';
 
 function App() {
-  const board = Array(9)
+    const [board,setBoard] = useState(Array(9)
     .fill(null)
-    .map(() => Array(9).fill(null));
-
-  const puzzle = Array(9)
+    .map(() => Array(9).fill(null)));
+    const [puzzle,setPuzzle] = useState(Array(9)
     .fill(null)
-    .map(() => Array(9).fill(null));
-
+    .map(() => Array(9).fill(null))
+    )
 
     //row,col
 const [selected,setSelected] = useState(null);
 
-// const handleInput =(rIdx,cIdx,value)=>{
-//   if(value === "" || (value >= 1 && value <=9 )){
-
-//   }
-// }
+const handleInput =(rIdx,cIdx,value)=>{
+  if(value === "" || (value >= 1 && value <=9 )){
+    setBoard((prev) => 
+      prev.map((row,r) =>
+        row.map((cell,c) =>{
+          if (r === rIdx && c ==cIdx){
+            return value ? parseInt(value) : null ;
+          }
+          return cell;
+        })
+      ))
+  }
+}
 
   return(
     <div style={{textAlign: 'center'}}>
@@ -27,6 +34,7 @@ const [selected,setSelected] = useState(null);
       <Grid
         board={board}
         puzzle={puzzle}
+        handleInput={handleInput}
         selected={selected}
         setSelected = {setSelected}
       />
