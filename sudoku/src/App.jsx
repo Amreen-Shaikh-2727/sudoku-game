@@ -1,4 +1,6 @@
 import {Grid}  from './components/Grid';
+import {Controls}  from './components/Controls';
+
 import './App.css';
 import { useState } from 'react';
 
@@ -13,6 +15,18 @@ function App() {
 
     //row,col
 const [selected,setSelected] = useState(null);
+
+const handleCheck = () =>{
+
+}
+
+const handleReset = () =>{
+  
+}
+
+const handleNewPuzzle = () =>{
+  
+}
 
 const handleInput =(rIdx,cIdx,value)=>{
   if(value === "" || (value >= 1 && value <=9 )){
@@ -37,6 +51,11 @@ const handleInput =(rIdx,cIdx,value)=>{
         handleInput={handleInput}
         selected={selected}
         setSelected = {setSelected}
+      />
+      <Controls
+       handleCheck ={handleCheck}
+       handleReset ={handleReset}
+       handleNewPuzzle = {handleNewPuzzle}
       />
     </div>
   )
