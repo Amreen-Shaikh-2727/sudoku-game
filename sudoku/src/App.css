@@ -3,6 +3,7 @@
 }
 
 .container{
+    margin: 20px;
     border-radius: 8px;
     padding: 16px;
     background: #fff;
@@ -55,4 +56,47 @@ input:focus{
 
 .selected input {
     background: #78b1eb;
+}
+
+button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 8px 24px;
+    margin-left: 5px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: #222;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+button:disabled {
+    background-color: #666;
+    cursor: not-allowed;
+}
+
+.status {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: black;
+    color: white;
+    padding: 2px 25px;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+.green input{
+    background-color: #a6f1a6;
+    transition: background-color 0.5s ease;
 }

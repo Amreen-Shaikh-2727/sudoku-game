@@ -1,5 +1,5 @@
 import classNames from "classnames";
-export const Grid = ({ board,handleInput, puzzle, selected, setSelected }) => {
+export const Grid = ({ board,handleInput, puzzle, selected, setSelected ,greenCount}) => {
   /**
    * [
    * [null,null,...]
@@ -22,19 +22,7 @@ export const Grid = ({ board,handleInput, puzzle, selected, setSelected }) => {
               <tr key={rIdx}>
                 {row.map((cell, cIdx) => {
                   const isPrefilled = puzzle[rIdx][cIdx] !== null;
-                  //'same-box', 'same-row', 'same-col'
-                  // let classNames = "cell";
-                  // if (selected && rIdx === selected[0]) {
-                  //   classNames += " same-row";
-                  // } else if (selected && cIdx === selected[1]) {
-                  //   classNames += " same-col";
-                  // } else if (
-                  //   selected &&
-                  //   Math.floor(rIdx / 3) === Math.floor(selected[0] / 3) &&
-                  //   Math.floor(cIdx / 3) === Math.floor(selected[1] / 3)
-                  // ) {
-                  //   classNames += " same-box";
-                  // }
+                  const cellIndex = rIdx * 9 + cIdx;
                   return (
                     <td
                       key={cIdx}
@@ -50,6 +38,9 @@ export const Grid = ({ board,handleInput, puzzle, selected, setSelected }) => {
                           selected &&
                           rIdx === selected[0] &&
                           cIdx === selected[1],
+
+                          "green": cellIndex < greenCount,
+
                       })}
                     >
                       <input
