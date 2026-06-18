@@ -1,35 +1,35 @@
 import { Grid } from "./components/Grid";
 import { Controls } from "./components/Controls";
-
+import { useEffect, useState } from "react";
 import "./App.css";
-import { useState } from "react";
+import { fetchPuzzle } from "./fetch-puzzle";
 
 function App() {
   //board[0][0] = null
 
-  const [board, setBoard] = useState(
-    Array(9)
-      .fill(null)
-      .map(() => Array(9).fill(null)),
-  );
+  const [board, setBoard] = useState(null);
 
   //puzzle[0][0] = null
 
-  const [puzzle, setPuzzle] = useState(
-    Array(9)
-      .fill(null)
-      .map(() => Array(9).fill(null)),
-  );
+  const [puzzle, setPuzzle] = useState(null);
 
-  const [solution, setSolution] = useState(
-    Array(9)
-      .fill(null)
-      .map(() => Array(9).fill(null)),
-  );
-  const [status, setStatus] = useState(null);
-
+  const [solution, setSolution] = useState(null);
+  const [status, setStatus] = useState("");
   //row,col
   const [selected, setSelected] = useState(null);
+
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    fetchPuzzle({
+      setError,
+      setStatus,
+      setPuzzle,
+      setSolution,
+      setBoard,
+      setSelected,
+    });
+  }, []);
 
   //coreect color it tell us how many block are green
 
@@ -43,10 +43,14 @@ function App() {
       setStatus("Correct!");
 
       let count = 0;
-      const totalCells = 81;
+      // const totalCells = 81;
       const interval = setInterval(() => {
         count++;
         setGreenCount(count);
+
+        if (count >= 81) {
+          clearInterval(interval);
+        }
       }, 10);
     } else {
       setStatus("Incorrect! Try Again!");
@@ -63,6 +67,14 @@ function App() {
 
   const handleNewPuzzle = () => {
     setGreenCount(0);
+    fetchPuzzle({
+      setError,
+      setStatus,
+      setPuzzle,
+      setSolution,
+      setBoard,
+      setSelected,
+    });
   };
 
   const handleInput = (rIdx, cIdx, value) => {
@@ -79,6 +91,14 @@ function App() {
       );
     }
   };
+
+  if (error) {
+    return <div style={{ color: "red" }}>{error}</div>;
+  }
+
+  if (!board) {
+    return <div>Loading</div>;
+  }
 
   return (
     <div style={{ textAlign: "center" }}>
@@ -97,6 +117,7 @@ function App() {
         handleNewPuzzle={handleNewPuzzle}
       />
       {status && <div className="status">{status}</div>}
+      {error && <div className="error">{error}</div>}
     </div>
   );
 }
