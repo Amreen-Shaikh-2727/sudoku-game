@@ -3,6 +3,11 @@
 A fully functional Sudoku game built using React that fetches puzzles from an external API and allows users to play interactively.
 
 ---
+##  Preview
+
+<img width="665" height="622" alt="image" src="https://github.com/user-attachments/assets/59414c91-5080-4335-b7fa-e95407355919" />
+
+---
 
 ## 🎮 Play Sudoku Game
 
@@ -10,12 +15,6 @@ A fully functional Sudoku game built using React that fetches puzzles from an ex
 
 ---
 
-##  Preview
-
-<img width="665" height="622" alt="image" src="https://github.com/user-attachments/assets/59414c91-5080-4335-b7fa-e95407355919" />
-
-
----
 
 ## ✨ Features
 
