@@ -1,16 +1,16 @@
-# 🧩 Sudoku Game (React)
+#  Sudoku Game (React)
 
 A fully functional Sudoku game built using React that fetches puzzles from an external API and allows users to play interactively.
 
 ---
 
-## 🚀 Live Demo
-(Add your deployed link here later)
-https://your-live-link.com
+## 🎮 Play Sudoku Game
+
+[![Play Now](https://img.shields.io/badge/PLAY-NOW-green?style=for-the-badge)](https://sudoku-game-two-omega.vercel.app/)
 
 ---
 
-## 📸 Preview
+##  Preview
 
 <img width="665" height="622" alt="image" src="https://github.com/user-attachments/assets/59414c91-5080-4335-b7fa-e95407355919" />
 
